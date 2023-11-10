@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notepad</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <header>
+      <div class="row">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary p-0">
+          <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+              aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="fileDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-house-door"></i> File</a>
+                  <ul class="dropdown-menu" aria-labelledby="fileDropdown">
+                    <li><a class="dropdown-item" href="#" id="newFileItem">New</a></li>
+                    <li><a class="dropdown-item" href="#" id="openFileItem">Open...</a></li>
+                    <li><a class="dropdown-item" href="#" id="saveFileItem">Save</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Exit</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="editDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-pencil"></i> Edit</a>
+                  <ul class="dropdown-menu" aria-labelledby="editDropdown">
+                    <li><a class="dropdown-item" href="#" id="cutItem">Cut</a></li>
+                    <li><a class="dropdown-item" href="#" id="copyItem">Copy</a></li>
+                    <li><a class="dropdown-item" href="#" id="pasteItem">Paste</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#" id="selectAllItem">Select All</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="viewDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-eye"></i> View</a>
+                  <ul class="dropdown-menu" aria-labelledby="viewDropdown">
+                    <li><a class="dropdown-item" href="#" id="zoomInBtn">Zoom In</a></li>
+                    <li><a class="dropdown-item" href="#" id="zoomOutBtn">Zoom Out</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#" id="statusBarBtn">Status Bar</a></li>
+                  </ul>
+                </li>
+                <!-- Updated Font dropdown -->
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="fontDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-fonts"></i> Font</a>
+                  <ul class="dropdown-menu" aria-labelledby="fontDropdown">
+                    <li><a class="dropdown-item" href="#" onclick="formatText('bold')">Bold</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="formatText('italic')">Italic</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="formatText('underline')">Underline</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="formatText('uppercase')">Uppercase</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="formatText('lowercase')">Lowercase</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="formatText('capitalize')">Capitalize</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link text-dark dropdown-toggle" href="#" id="alignDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false"><i class="bi bi-text-center"></i> Align</a>
+                  <ul class="dropdown-menu" aria-labelledby="alignDropdown">
+                    <li><a class="dropdown-item" href="#" onclick="setAlignment('left')">Left</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="setAlignment('center')">Center</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="setAlignment('right')">Right</a></li>
+                    <li><a class="dropdown-item" href="#" onclick="setAlignment('justify')">Justify</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="btn" onclick="changeFontSize('increase')">
+                    <img width="22" height="22" src="https://img.icons8.com/material-outlined/24/increase-font.png" alt="increase-font"/>
+                  </button>
+                </li>
+                <li class="nav-item dropdown">
+                  <button class="btn " onclick="changeFontSize('decrease')">
+                    <img width="22" height="22" src="https://img.icons8.com/material-rounded/24/decrease-font.png" alt="decrease-font"/>
+                  </button>
+                </li>
+                
+              </ul>
+
+              <!-- Right side icon -->
+              
+              <div>
+                <button class="btn" id="shareBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  <i class="bi bi-share"></i> Share
+                </button>
+              </div>
+              <div>
+                <button class="btn" id="modeBtn" onclick="toggleLightDarkMode()">
+                  <i class="bi bi-sun" id="modeIcon"></i>
+                </button>
+              </div>
+              <div class="d-flex">
+                <i class="bi bi-gear"></i>
+              </div>
+              
+              
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+<!-- -------model code is here----- -->
+<!-- Add this to your HTML for the modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Share Options</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <button class="btn btn-primary" onclick="copyToClipboard('Embedded URL')">Copy Embedded URL</button>
+        <button class="btn btn-primary" onclick="copyToClipboard('Share URL')">Copy Share URL</button>
+        <button class="btn btn-primary" onclick="shareViaEmail()">Share to Email</button>
+        <button class="btn btn-primary" onclick="shareViaWhatsApp()">Share to WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ------model code is over now ------  -->
+    <!-- ---------------middle text part is here ------------  -->
+    <div class="row">
+      <div class="text-area"  contenteditable="true" oninput="updateCursorPosition(this)">
+        <!-- Users can write here -->
+      </div>
+    </div>
+
+    <!-- ---middle text part is over now -----  -->
+
+    <div class="footer p-0 pt-1 pb-1">
+      <div class="" id="cursorPosition"> Ln 1, Col 1</div>
+      <div class="d-flex">
+        <div id="zoomPercentage">100%</div>
+        <div>Windows (CRFL)</div>
+        <div>UTF-8</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+
+  <!-- Your HTML code above this line -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html> 
