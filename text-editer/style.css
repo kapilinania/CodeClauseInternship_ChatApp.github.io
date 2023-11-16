@@ -87,3 +87,23 @@
     background-color: white;
     color: black;
 }
+
+#sidebar {
+  position: fixed;
+  top: 0;
+  right: -200px; /* Initially hide the sidebar off-screen on the right */
+  width: 200px;
+  height: 100%;
+  background-color: #f8f9fa;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+#sidebar.open {
+  right: 0; /* Display the sidebar on the right when the 'open' class is added */
+}
+
+#sidebar p {
+  list-style: none;
+  padding: 20px;
+}

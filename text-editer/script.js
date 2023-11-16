@@ -295,28 +295,12 @@ function toggleLightDarkMode() {
   }
 
 
+ function toggleSidebar() {
+      var sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
 
-  //SHARE QUEARY
 
-  function copyToClipboard(text) {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        alert(`${text} copied to clipboard!`);
-      })
-      .catch(err => {
-        console.error('Unable to copy to clipboard', err);
-      });
-  }
-
-  function shareViaEmail() {
-    // Implement logic to initiate sharing via email
-    alert("Initiating sharing via email...");
-  }
-
-  function shareViaWhatsApp() {
-    // Implement logic to initiate sharing via WhatsApp
-    alert("Initiating sharing via WhatsApp...");
-  }
   
 
   

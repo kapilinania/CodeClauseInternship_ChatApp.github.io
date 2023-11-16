@@ -100,18 +100,14 @@
 
               <!-- Right side icon -->
               
-              <div>
-                <button class="btn" id="shareBtn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  <i class="bi bi-share"></i> Share
-                </button>
-              </div>
+              
               <div>
                 <button class="btn" id="modeBtn" onclick="toggleLightDarkMode()">
                   <i class="bi bi-sun" id="modeIcon"></i>
                 </button>
               </div>
               <div class="d-flex">
-                <i class="bi bi-gear"></i>
+                <i class="bi bi-gear" onclick="toggleSidebar()"></i>
               </div>
               
               
@@ -121,28 +117,13 @@
       </div>
     </header>
 
-<!-- -------model code is here----- -->
-<!-- Add this to your HTML for the modal -->
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Share Options</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <button class="btn btn-primary" onclick="copyToClipboard('Embedded URL')">Copy Embedded URL</button>
-        <button class="btn btn-primary" onclick="copyToClipboard('Share URL')">Copy Share URL</button>
-        <button class="btn btn-primary" onclick="shareViaEmail()">Share to Email</button>
-        <button class="btn btn-primary" onclick="shareViaWhatsApp()">Share to WhatsApp</button>
-      </div>
+     <!-- Sidebar -->
+     <div id="sidebar">
+      <p>We are <mark>Updated</mark> very soon </p>
+    
     </div>
-  </div>
-</div>
 
 
-<!-- ------model code is over now ------  -->
     <!-- ---------------middle text part is here ------------  -->
     <div class="row">
       <div class="text-area"  contenteditable="true" oninput="updateCursorPosition(this)">
